@@ -1,19 +1,29 @@
-# apollo-server-tutorial
-**Note: The Tutorial uses Apollo Server v0.1, which is not the current version. To get to the current version, follow the tutorial, and then update following this [migration guide](http://dev.apollodata.com/tools/apollo-server/migration.html).**
+# server
 
-**All The changes necessary to update to Apollo Server v0.2 can be found in the diff of [@p4bloch's PR](https://github.com/apollostack/apollo-server-tutorial/pull/6/files)**
+```
+# install dependencies
+yarn
 
-This repo contains the full code for the GraphQL server tutorial (SQL, MongoDB + REST).
-
-Documentation and explanations can be found on [docs.apollostack.com](http://dev.apollodata.com/tools/apollo-server/index.html)
-
-## How to use
-
-In order for the MongoDB part of this example to work, you need to have MongoDB installed on your machine. All other required parts come with this package.
-
-```sh
-npm install
-npm start
+# install knex globally - required for running migrations and seeds
+yarn global add knex
 ```
 
-The server should now accept requests at http://localhost:8080/graphql
+The database connection is found in server/db/knexfile.js - adjust database_name, database_user, and database_user_password accordingly. I have chosen postgresql, but knex will also work with mysql and sqlite.
+
+The database has to be created prior to running the knex migrate. Once database is set up we can run the migrate to create the table.
+
+```
+cd db
+
+# create a new table users in the database with 3 columns (id, username, password)
+knex migrate:latest
+
+# insert seed data into table - adds one user with username: seedtest and password: password
+knex seed:run
+
+# start the graphql server on port 3000, graphql interface at http://localhost:3000/graphiql
+yarn start
+```
+
+
+
