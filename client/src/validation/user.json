@@ -1,0 +1,32 @@
+{
+  "login": {
+    "username": {
+      "name": "Username",
+      "required": true
+    },
+    "password": {
+      "name": "Password",
+      "required": true
+    }
+  },
+  "register": {
+    "username": {
+      "name": "Username",
+      "required": true,
+      "maxLength": 15,
+      "customValidations": ["validateUsername"]
+    },
+    "password": {
+      "name": "Password",
+      "required": true,
+      "minLength": 6,
+      "maxLength": 30,
+      "customValidations": ["validatePassword"]
+    },
+    "cpassword": {
+      "name": "Confirm Password",
+      "required": true,
+      "customValidations": ["validateConfirmPassword"]
+    }
+  }
+}
