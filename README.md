@@ -14,3 +14,5 @@ Instructions for client and server are in their respective folders.
 
 - [ ] handle validations returned by server
 - [ ] send jwt with each request and respond with data based on jwt
+- [ ] removing unused code
+- [ ] fixing styling
